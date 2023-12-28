@@ -1,0 +1,6 @@
+1.Core components: --> branch name === RN-core-component
+    1. View
+    2. ScrollView
+    3. Text
+    4. Image
+    5. TextInput
