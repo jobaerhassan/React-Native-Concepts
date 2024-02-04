@@ -1,17 +1,11 @@
-import { StyleSheet, Text, View } from 'react-native';
-import ImageComponent from './core-components/image/Image';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import RouterIndex from './navigation/route-nav/rootRoute';
 const MainIndex = () => {
-    return(
-        <View style={styles.container}>
-            {/* <ImageComponent/> */}
-            <Text>hello world</Text>
-        </View>
-    )
-}
+  return (
+    <NavigationContainer>
+      <RouterIndex />
+    </NavigationContainer>
+  );
+};
 export default MainIndex;
-const styles = StyleSheet.create({
-    container: {
-        backgroundColor: 'green',
-        flex: 1
-    }
-})
