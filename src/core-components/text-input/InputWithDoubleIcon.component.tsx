@@ -1,46 +1,65 @@
 import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
-import React from 'react';
-// Left Icon
-// Right Icon
-// onChangeText
-// right icon press
-// left icon press
-// input field props required
-// rest are extra props
-//design
+import React, {useState} from 'react';
+import EyeOffIcon from '../../assets/icons/EyeOff.icon.asset';
+import EyeOnIcon from '../../assets/icons/EyeOn.icon.asset';
 
 const InputWithDoubleIcon: React.FC = ({
-  onChangeText,
+  onChangeText = () => {},
   rightIcon,
   leftIcon,
-  disabledLeft = false,
+  disabledLeft = true,
   disableRight = false,
   handlePressLeft = () => {},
   handlePressRight = () => {},
   multiline = false,
+  extraInputProps = {},
+  name,
+  type = 'normal',
 }: any) => {
+  const [isShowPass, setIsShowPass] = useState(false);
+  const handleOnChange = (text: string) => {
+    if (name && name?.trim() !== '') {
+      onChangeText(text, name);
+    } else {
+      onChangeText(text, undefined);
+    }
+  };
+  const togglePassIcon = () => {
+    setIsShowPass(!isShowPass);
+  };
+
   return (
     <View style={styles.container}>
       {leftIcon && (
         <TouchableOpacity
-          onPress={handlePressRight}
+          onPress={handlePressLeft}
           style={styles.icon}
-          disabled={disableRight}>
+          disabled={disabledLeft}>
           {leftIcon}
         </TouchableOpacity>
       )}
 
       <TextInput
-        onChangeText={onChangeText}
+        onChangeText={handleOnChange}
         style={styles.inputStyle}
         multiline={multiline}
+        secureTextEntry={type === 'password' && !isShowPass}
+        {...extraInputProps}
       />
-      {rightIcon && (
+      {rightIcon && type === 'normal' && (
         <TouchableOpacity
-          onPress={handlePressLeft}
+          onPress={handlePressRight}
           style={styles.icon}
-          disabled={disabledLeft}>
+          disabled={disableRight}>
           {rightIcon}
+        </TouchableOpacity>
+      )}
+      {type === 'password' && (
+        <TouchableOpacity
+          onPress={togglePassIcon}
+          style={styles.icon}
+          disabled={disableRight}>
+          {isShowPass ? <EyeOffIcon /> : <EyeOnIcon />}
         </TouchableOpacity>
       )}
     </View>
@@ -52,11 +71,12 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     borderWidth: 1,
-    borderColor: 'red',
+    borderColor: 'blue',
     borderRadius: 12,
   },
   inputStyle: {
     flex: 1,
+    paddingHorizontal: 10,
   },
   icon: {
     paddingHorizontal: 10,
