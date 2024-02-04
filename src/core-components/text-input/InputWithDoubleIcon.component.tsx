@@ -1,9 +1,17 @@
 import {StyleSheet, Text, TextInput, View} from 'react-native';
 import React from 'react';
-const InputWithDoubleIcon: React.FC = () => {
+// Left Icon
+// Right Icon
+// onChangeText
+// right icon press
+// left icon press
+// input field props required
+// rest are extra props
+// 
+const InputWithDoubleIcon: React.FC = ({onChangeText}: any) => {
   return (
     <View style={styles.container}>
-      <TextInput />
+      <TextInput onChangeText={onChangeText}  />
     </View>
   );
 };
