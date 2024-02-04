@@ -1,4 +1,4 @@
-import {StyleSheet, Text, TextInput, View} from 'react-native';
+import {StyleSheet, TextInput, TouchableOpacity, View} from 'react-native';
 import React from 'react';
 // Left Icon
 // Right Icon
@@ -7,15 +7,61 @@ import React from 'react';
 // left icon press
 // input field props required
 // rest are extra props
-// 
-const InputWithDoubleIcon: React.FC = ({onChangeText}: any) => {
+//design
+
+const InputWithDoubleIcon: React.FC = ({
+  onChangeText,
+  rightIcon,
+  leftIcon,
+  disabledLeft = false,
+  disableRight = false,
+  handlePressLeft = () => {},
+  handlePressRight = () => {},
+  multiline = false,
+}: any) => {
   return (
     <View style={styles.container}>
-      <TextInput onChangeText={onChangeText}  />
+      {leftIcon && (
+        <TouchableOpacity
+          onPress={handlePressRight}
+          style={styles.icon}
+          disabled={disableRight}>
+          {leftIcon}
+        </TouchableOpacity>
+      )}
+
+      <TextInput
+        onChangeText={onChangeText}
+        style={styles.inputStyle}
+        multiline={multiline}
+      />
+      {rightIcon && (
+        <TouchableOpacity
+          onPress={handlePressLeft}
+          style={styles.icon}
+          disabled={disabledLeft}>
+          {rightIcon}
+        </TouchableOpacity>
+      )}
     </View>
   );
 };
 export default InputWithDoubleIcon;
 const styles = StyleSheet.create({
-  container: {},
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: 'red',
+    borderRadius: 12,
+  },
+  inputStyle: {
+    flex: 1,
+  },
+  icon: {
+    paddingHorizontal: 10,
+  },
 });
+
+// autoCorrect
+//
