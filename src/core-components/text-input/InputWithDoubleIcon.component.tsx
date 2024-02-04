@@ -13,8 +13,12 @@ const InputWithDoubleIcon: React.FC = ({
   handlePressRight = () => {},
   multiline = false,
   extraInputProps = {},
+  placeholder = 'write here',
   name,
   type = 'normal',
+  value,
+  defaultValue,
+  inputRef,
 }: any) => {
   const [isShowPass, setIsShowPass] = useState(false);
   const handleOnChange = (text: string) => {
@@ -30,7 +34,7 @@ const InputWithDoubleIcon: React.FC = ({
 
   return (
     <View style={styles.container}>
-      {leftIcon && (
+      {leftIcon && type === 'normal' && (
         <TouchableOpacity
           onPress={handlePressLeft}
           style={styles.icon}
@@ -42,7 +46,13 @@ const InputWithDoubleIcon: React.FC = ({
       <TextInput
         onChangeText={handleOnChange}
         style={styles.inputStyle}
+        placeholder={placeholder}
         multiline={multiline}
+        value={value?.toString()}
+        defaultValue={defaultValue?.toString()}
+        ref={inputRef}
+        // onFocus={}
+        // onBlur={}
         secureTextEntry={type === 'password' && !isShowPass}
         {...extraInputProps}
       />
@@ -82,6 +92,3 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
   },
 });
-
-// autoCorrect
-//
