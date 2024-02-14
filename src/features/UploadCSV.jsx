@@ -10,9 +10,9 @@ const UploadCSV = () => {
       const doc = await DocumentPicker.pick({
         type: DocumentPicker.types.allFiles,
       });
-      const filePath = doc.uri;
+      const filePath = doc[0].uri;
       setSelectedDoc(filePath);
-      readFile();
+      console.log(filePath);
     } catch (error) {
       console.log('Error picking document:', error);
     }
@@ -20,7 +20,7 @@ const UploadCSV = () => {
   const readFile = async () => {
     if (selectedDoc) {
       try {
-        const content = await RNFS.readFile(selectedDoc, 'utf-8');
+        const content = await RNFS.readFile(selectedDoc);
         console.log('document content', content);
       } catch (error) {
         console.log('error while read file', error);
@@ -30,6 +30,7 @@ const UploadCSV = () => {
   return (
     <View style={styles.container}>
       <Button title="Upload file" onPress={selectFiles} />
+      <Button title="Read File" onPress={readFile} />
     </View>
   );
 };
