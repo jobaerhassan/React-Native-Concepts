@@ -1,12 +1,12 @@
 /* eslint-disable react-native/no-inline-styles */
 import {View} from 'react-native';
 import React from 'react';
-import UploadCSV from '../features/UploadCSV';
+import ParentForwardRef from '../core-components/forward-ref/ParentForwardRef';
 
 const Home = () => {
   return (
     <View style={{flex: 1}}>
-      <UploadCSV />
+      <ParentForwardRef />
     </View>
   );
 };

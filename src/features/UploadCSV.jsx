@@ -36,16 +36,17 @@ const UploadCSV = () => {
       <Button title="Upload file" onPress={selectFiles} />
       <Button title="Read File" onPress={readFile} />
       <View>
-        {parsedData.map(item => {
-          const tempArr = item.split(',');
-          return (
-            <View style={{flexDirection: 'row', gap: 10}}>
-              <Text style={{flexGrow: 1}}>{tempArr[0]}</Text>
-              <Text style={{flexGrow: 1}}>{tempArr[1]}</Text>
-              <Text style={{flexGrow: 1}}>{tempArr[2]}</Text>
-            </View>
-          );
-        })}
+        {parsedData &&
+          parsedData.map(item => {
+            const tempArr = item.split(',');
+            return (
+              <View style={{flexDirection: 'row', gap: 10}}>
+                <Text style={{flexGrow: 1}}>{tempArr[0]}</Text>
+                <Text style={{flexGrow: 1}}>{tempArr[1]}</Text>
+                <Text style={{flexGrow: 1}}>{tempArr[2]}</Text>
+              </View>
+            );
+          })}
       </View>
     </View>
   );
