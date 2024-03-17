@@ -1,7 +1,6 @@
 const routeName = {
   home: 'home',
   login: 'login',
-  profile: 'profile',
-  about: 'about',
+  splash: 'splash',
 };
 export default routeName;
