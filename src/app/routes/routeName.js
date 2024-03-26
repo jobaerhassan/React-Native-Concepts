@@ -1,6 +1,6 @@
 const routeName = {
-  home: 'home',
   login: 'login',
   splash: 'splash',
+  csv: 'upload-csv',
 };
 export default routeName;
