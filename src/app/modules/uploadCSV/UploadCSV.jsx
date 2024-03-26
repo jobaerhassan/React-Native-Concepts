@@ -4,9 +4,14 @@ import {useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
+import Papa from 'papaparse';
+import {useNavigation} from '@react-navigation/native';
+import routeName from '../../routes/routeName';
+const myColumnNames = ['firstName', 'lastName', 'Email', 'phone'];
 const UploadCSV = () => {
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [parsedData, setParsedData] = useState(null);
+  const navigation = useNavigation();
   const selectFiles = async () => {
     try {
       const doc = await DocumentPicker.pick({
@@ -31,10 +36,19 @@ const UploadCSV = () => {
       }
     }
   };
+  const parseCSV = async () => {
+    const parsedData = await Papa.parse(selectedDoc, {
+      header: true,
+    });
+    console.log(parsedData);
+  };
+  const mapData = () => {
+    navigation.navigate(routeName.mapCsv);
+  };
   return (
     <View style={styles.container}>
       <Button title="Upload file" onPress={selectFiles} />
-      <Button title="Read File" onPress={readFile} />
+      <Button title="Read File" onPress={parseCSV} />
       <View>
         {parsedData &&
           parsedData.map(item => {
@@ -48,6 +62,7 @@ const UploadCSV = () => {
             );
           })}
       </View>
+      <Button title="Map the data" onPress={mapData} />
     </View>
   );
 };
