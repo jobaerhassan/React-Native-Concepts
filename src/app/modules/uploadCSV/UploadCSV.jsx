@@ -4,10 +4,8 @@ import {useState} from 'react';
 import {Button, StyleSheet, Text, View} from 'react-native';
 import DocumentPicker from 'react-native-document-picker';
 import RNFS from 'react-native-fs';
-import Papa from 'papaparse';
 import {useNavigation} from '@react-navigation/native';
 import routeName from '../../routes/routeName';
-const myColumnNames = ['firstName', 'lastName', 'Email', 'phone'];
 const UploadCSV = () => {
   const [selectedDoc, setSelectedDoc] = useState(null);
   const [parsedData, setParsedData] = useState(null);
@@ -19,7 +17,6 @@ const UploadCSV = () => {
       });
       const filePath = doc[0].uri;
       setSelectedDoc(filePath);
-      console.log(filePath);
     } catch (error) {
       console.log('Error picking document:', error);
     }
@@ -36,19 +33,19 @@ const UploadCSV = () => {
       }
     }
   };
-  const parseCSV = async () => {
-    const parsedData = await Papa.parse(selectedDoc, {
-      header: true,
-    });
-    console.log(parsedData);
-  };
+  // const parseCSV = async () => {
+  //   const parsedData = await Papa.parse(selectedDoc, {
+  //     header: true,
+  //   });
+  //   console.log(parsedData);
+  // };
   const mapData = () => {
-    navigation.navigate(routeName.mapCsv);
+    navigation.navigate(routeName.mapCsv, {parsedData: parsedData});
   };
   return (
     <View style={styles.container}>
       <Button title="Upload file" onPress={selectFiles} />
-      <Button title="Read File" onPress={parseCSV} />
+      <Button title="Read File" onPress={readFile} />
       <View>
         {parsedData &&
           parsedData.map(item => {
