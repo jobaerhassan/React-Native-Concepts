@@ -1,6 +1,7 @@
 /* eslint-disable react-native/no-inline-styles */
 import {View, Text, StyleSheet} from 'react-native';
 import React from 'react';
+import ButtonAnim from '../animation/ButtonAnim';
 
 const Splash = () => {
   return (
@@ -10,7 +11,7 @@ const Splash = () => {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-      <Text style={{fontSize: 100}}>Splash Screen</Text>
+      <ButtonAnim />
     </View>
   );
 };
