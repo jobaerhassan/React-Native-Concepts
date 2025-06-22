@@ -7,7 +7,7 @@ const Splash = () => {
   const navigation = useNavigation();
   useEffect(() => {
     setTimeout(() => {
-      navigation.navigate(routeName.ballAnimationRenderer);
+      navigation.navigate(routeName.rootAnimationRenderer);
     }, 3000);
   }, [navigation]);
   return (
