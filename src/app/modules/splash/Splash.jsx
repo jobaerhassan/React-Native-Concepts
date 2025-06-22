@@ -1,8 +1,15 @@
-/* eslint-disable react-native/no-inline-styles */
 import {View, Text, StyleSheet} from 'react-native';
-import React from 'react';
+import React, {useEffect} from 'react';
+import {useNavigation} from '@react-navigation/native';
+import routeName from '../../routes/routeName';
 
 const Splash = () => {
+  const navigation = useNavigation();
+  useEffect(() => {
+    setTimeout(() => {
+      navigation.navigate(routeName.ballAnimationRenderer);
+    }, 3000);
+  }, [navigation]);
   return (
     <View
       style={{

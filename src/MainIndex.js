@@ -1,6 +1,6 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import RouterIndex from './navigation/route-nav/rootRoute';
+import RouterIndex from './app/routes/rootRoute';
 const MainIndex = () => {
   return (
     <NavigationContainer>
