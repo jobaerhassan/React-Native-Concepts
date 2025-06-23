@@ -4,5 +4,6 @@ const routeName = {
   splash: 'splash',
   rootAnimationRenderer: 'rootAnimationRenderer',
   ballAnimationRenderer: 'ballAnimationRenderer',
+  carouselAnimationRenderer: 'carouselAnimationRenderer',
 };
 export default routeName;

@@ -1,6 +1,6 @@
 import React, {useEffect, useRef} from 'react';
 import {Animated} from 'react-native';
-import Ball from '../simple-animation/Ball.tsx';
+import Ball from '../components/Ball.tsx';
 
 const BallAnimationRenderer = () => {
   // Use useRef to persist the animated value across renders

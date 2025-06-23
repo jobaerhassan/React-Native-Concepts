@@ -4,6 +4,7 @@ import React from 'react';
 import Splash from '../modules/splash/Splash';
 import RootAnimationRenderer from '../modules/animation/root-animation-renderer';
 import BallAnimationRenderer from '../modules/animation/animation-renderer/BallAnimationRenderer';
+import CarouselAnimationRenderer from '../modules/animation/animation-renderer/CarouselAnimationRenderer';
 const RouterIndex = () => {
   const stack = createNativeStackNavigator();
   return (
@@ -17,6 +18,10 @@ const RouterIndex = () => {
       <stack.Screen
         name={routeName.ballAnimationRenderer}
         component={BallAnimationRenderer}
+      />
+      <stack.Screen
+        name={routeName.carouselAnimationRenderer}
+        component={CarouselAnimationRenderer}
       />
     </stack.Navigator>
   );

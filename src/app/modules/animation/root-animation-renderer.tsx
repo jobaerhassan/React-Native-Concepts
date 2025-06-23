@@ -18,6 +18,13 @@ const RootAnimationRenderer = () => {
       title: 'Ball Animation',
       onPress: () => navigation.navigate(routeName.ballAnimationRenderer),
     },
+    {
+      id: 'carousel',
+      title: 'Carousel Animation',
+      onPress: () => {
+        navigation.navigate(routeName.carouselAnimationRenderer);
+      },
+    },
   ];
 
   return (
